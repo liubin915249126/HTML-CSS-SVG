@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>heart beats</title>
+    <style type="text/css">
+     .wrap{
+         width:400px;
+         margin: 200px auto 0;
+     }
+     .heart{
+            width: 200px;
+            height: 200px;
+            background: #f00;
+            position: relative;
+            filter:drop-shadow(0px 0px 20px rgb(255,20,20));
+            transform: rotate(45deg);
+            animation:heartbeat 1s linear infinite; 
+     }
+     .heart:before, .heart:after{
+        content: "";
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: #f00;
+        border-radius: 100px;
+    } 
+    .heart:before{
+        left: -100px;  
+        }
+    .heart:after{
+        left: 0;
+        top: -100px;
+    } 
+    @keyframes heartbeat{
+        0%{transform: rotate(45deg) scale(0.8,0.8); opacity: 1;}
+        25%{transform: rotate(45deg) scale(1,1); opacity: 0.8;}
+        100%{transform: rotate(45deg) scale(0.8,0.8); opacity: 1;}
+    }
+    </style> 
+</head>
+<body>
+    <div class="wrap">
+      <div class="heart"></div>
+      <input type="button" value="暂停" id="click"/>   
+    </div>
+    <script type="text/javascript">
+      var heart = document.getElementsByClassName('heart')[0]
+      var button = document.getElementById('click')
+      button.addEventListener('click',function(){
+          var playstate = document.defaultView.getComputedStyle(heart, null).animationPlayState
+          if(playstate=="running"){
+             heart.style.animationPlayState = "paused"
+             this.value="运行"
+          }else{
+             heart.style.animationPlayState = "running"
+             this.value = "暂停"
+          }
+      },false)
+    </script>
+</body>
+</html>
