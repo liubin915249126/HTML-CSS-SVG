@@ -9,3 +9,6 @@ HTML，css效果收集
 
 #### 3.单个div+css3制作心形[heart.html](https://github.com/liubin915249126/HTML-CSS/blob/master/heart.html)
 ![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/heartgif.gif)
+
+#### 3.单个div+css3制作心形[triangle.html](https://github.com/liubin915249126/HTML-CSS/blob/master/triangle.html)
+![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/triangle.png)
