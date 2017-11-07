@@ -5,8 +5,7 @@ HTML，css效果收集
 ![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/rect.png)
 
 #### input制作switch开关[switch.html](https://github.com/liubin915249126/HTML-CSS/blob/master/switch.html)
-![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/switch
-.gif)
+![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/switch.gif)
 
 #### css制作五角星[five-star.html](https://github.com/liubin915249126/HTML-CSS/blob/master/five-star.html)
 ![效果图](https://github.com/liubin915249126/HTML-CSS/blob/master/image/five-star.png)
