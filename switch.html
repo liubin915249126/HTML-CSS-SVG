@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>switch</title>
+    <style type="text/css">
+         .wrap .switch{
+             margin-top: 20px;
+         }
+        /*开关按钮样式*/
+        .onoffswitch {
+            position: relative;
+            width: 58px;
+            /*54,58修改开关样式*/
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .onoffswitch-checkbox {
+            display: none;
+        }
+
+        .onoffswitch-label {
+            display: block;
+            overflow: hidden;
+            cursor: pointer;
+            border: 2px solid #1AB394;
+            border-radius: 3px;
+        }
+
+        .onoffswitch-inner {
+            display: block;
+            width: 200%;
+            margin-left: -100%;
+            -webkit-transition: margin 0.3s ease-in 0s;
+            transition: margin 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-inner:before,
+        .onoffswitch-inner:after {
+            display: block;
+            float: left;
+            width: 50%;
+            height: 16px;
+            padding: 0;
+            line-height: 16px;
+            font-size: 10px;
+            color: white;
+            font-family: Trebuchet, Arial, sans-serif;
+            font-weight: bold;
+            box-sizing: border-box;
+        }
+
+        .onoffswitch-inner:before {
+            content: "是";
+            padding-left: 7px;
+            background-color: #1AB394;
+            color: #FFFFFF;
+        }
+
+        .onoffswitch-inner:after {
+            content: "否";
+            padding-right: 7px;
+            background-color: #FFFFFF;
+            color: #919191;
+            text-align: right;
+        }
+
+        .onoffswitch-switch {
+            display: block;
+            width: 18px;
+            margin: 0px;
+            background: #FFFFFF;
+            border: 2px solid #1AB394;
+            border-radius: 3px;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 36px;
+            -webkit-transition: all 0.3s ease-in 0s;
+            transition: all 0.3s ease-in 0s;
+        }
+
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+            margin-left: 0;
+        }
+
+        .onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+            right: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap" style="width: 100px;margin: 0 auto">
+        <div class="switch" data-keypoition="true" data-node="00050049">
+            <div class="onoffswitch">
+                <input type="checkbox" checked="true" class="onoffswitch-checkbox" id="example1">
+                <label class="onoffswitch-label" for="example1">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+        </div>
+
+        <div class="switch" data-keypoition="true" data-node="00050049">
+            <div class="onoffswitch">
+                <input type="checkbox" checked="true" class="onoffswitch-checkbox" id="example2">
+                <label class="onoffswitch-label" for="example2">
+                    <span class="onoffswitch-inner"></span>
+                    <span class="onoffswitch-switch"></span>
+                </label>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <script type="text/javascript">
+        window.onload = function () {
+            checkClick();
+        };
+        function checkClick() {
+            var input = document.querySelectorAll('input');
+            var inputArr = [].slice.apply(input);
+
+            inputArr.forEach(function (value, index, arr) {
+                value.onclick = function () {
+                    var value = this.checked;//获取checked值
+                    console.log(value)
+                }
+            });
+
+            var input1 = document.querySelector('#example1');
+            input1.checked = false;//修改checked值
+
+        }
+    </script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <!--<script type="text/javascript">
+    $(function () {
+       $('#example1').attr('checked',false);
+
+       $('input').on('click',function () {
+           console.log($(this).prop('checked'))
+       })
+    })
+</script>-->
+</body>
+
+</html>
