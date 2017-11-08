@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>slideIn</title>
+    <style type="text/css">
+      .slideIn{
+          background: #e7c935;
+          height:80px;
+      }
+      .slideIn::before{
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            margin-top: 0px;
+            overflow: hidden;
+            z-index: 6;
+            background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(255,255,255,0)), color-stop(50%, rgba(255,255,255,0.4)), color-stop(100%, rgba(255,255,255,0)));
+            transform: skewX(-25deg);
+            animation: slideIn 1.5s ease-out forwards;
+            /* animation-delay: .5s; */
+      }
+      @keyframes slideIn{
+            0%{
+                margin-left: -60px
+            }99%{
+                opacity: 1
+            }100%{
+                margin-left: 100%;opacity: 0
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="slideIn">
+
+    </div>
+</body>
+</html>
