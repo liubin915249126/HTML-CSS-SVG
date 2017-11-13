@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG测试</title>
+    <style type="text/css">
+      html,body,svg,path,div{
+          margin: 0;
+          padding:0;
+      }
+      svg{
+          overflow:visible;
+      }
+      svg path{
+           stroke: #009FFD;
+           fill:transparent;
+           stroke-width:5;
+      }
+    </style>
+</head>
+<body>
+   <svg>
+       <g>
+           <path id="target1" d="M10,10 H300" ></path>
+       </g>
+   </svg>
+   <div>
+       <label for="num1">stroke-dasharray</label><input id="num1" type="range"/>
+       <label for="num1">stroke-dashoffset</label><input id="num2" type="range" />
+   </div>
+   <script type="text/javascript"></script>
+    <svg>
+        <g>
+            <path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke-dasharray="10 5"></path>
+            <!-- <path d="M 50,50  a 47,47 0 1 1 0,94" stroke-dasharray="10 5"></path>
+            <path d="M 50,50  a 47,47 0 1 1 0,-94" stroke-dasharray="10 5"></path> -->
+        </g>
+    </svg>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript" src="snap.svg.js"></script>
+    <script type="text/javascript" src="../d3.js"></script>
+    <script type="text/javascript">
+       
+        var num1 = d3.select('#num1')
+        var num2 = d3.select('#num2')
+        var target = d3.select('#target1')
+        num1.on('change',function(){
+            target.attr('stroke-dasharray',this.value)
+        })
+        
+        num2.on('change', function () {
+            target.attr('stroke-dashoffset', this.value)
+        })
+        
+    </script>
+</body>
+</html>
