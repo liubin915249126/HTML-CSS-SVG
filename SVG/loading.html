@@ -30,11 +30,41 @@
                 a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-width="6" fill-opacity="0" style="stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s;"></path>
             <path class="ant-progress-circle-path" d="M 50,50 m 0,-47
                     a 47,47 0 1 1 0,94
-                    a 47,47 0 1 1 0,-94" stroke-linecap="round" stroke="#108ee9" stroke-width="6" fill-opacity="0" stroke-dasharray="0, 295.31"
-                style="stroke-dashoffset: 0px;transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s, stroke-width 0.06s ease 0.3s;"></path>
+                    a 47,47 0 1 1 0,-94" stroke-linecap="round" stroke="#108ee9" stroke-width="6" fill-opacity="0" 
+                style="stroke-dasharray:0, 295.31;stroke-dashoffset: 0px;transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s, stroke-width 0.06s ease 0.3s;"></path>
         </svg>
         <span class="progress">0%</span>
     </div>
+    <div class="wrap">
+            <svg viewBox="0 0 100 100">
+                <!-- <path d="M20,20 L200,200" stroke="#333"></path> -->
+                <path class="ant-progress-circle-trail" d="M 50,50 m 0,-47
+                        a 47,47 0 1 1 0,94
+                        a 47,47 0 1 1 0,-94" stroke="#f3f3f3" stroke-width="6" fill-opacity="0" style="stroke-dasharray: 295.31px, 295.31px; stroke-dashoffset: 0px; transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s;"></path>
+                <path class="ant-progress-circle-path" d="M 50,50 m 0,-47
+                            a 47,47 0 1 0 0,94
+                            a 47,47 0 1 0 0,-94" stroke-linecap="round" stroke="#108ee9" stroke-width="6" fill-opacity="0" 
+                    style="stroke-dasharray:0, 295.31;stroke-dashoffset: 0px;transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s, stroke-width 0.06s ease 0.3s;"></path>
+            </svg>
+            <span class="progress">0%</span>
+    </div>
+    <div class="wrap">
+      <svg viewBox="0 0 100 100">
+          <path d="M0,10 H100"
+                stroke="#f3f3f3" 
+                stroke-width="6"
+                stroke-linecap="round"
+                style="stroke-dasharray:100px,0"
+                ></path>
+          <path class="line-progress"
+                stroke-linecap="round"
+                d="M0,10 H100" 
+                stroke="#108ee9"
+                stroke-width="6"
+                style="stroke-dasharray:0,100px"
+                ></path>
+      </svg>
+    </div> 
 
     <div style="text-align:center;"><input id="range" type="range" value= "0" /></div>
     <script type="text/javascript" src="snap.svg.js"></script>
@@ -44,23 +74,41 @@
     //    path.animate({ strokeDasharray:'295.31px, 295.31px'},2000, mina.linear,function(){
            
     //    })
-          var range = d3.select('#range')
-          var circle = d3.select('.ant-progress-circle-path')
-          var text = document.getElementsByClassName('progress')[0]
-          range.on('change',function(){
+          var range = document.getElementById('range')
+          var circles = document.getElementsByClassName('ant-progress-circle-path')
+          var line = document.getElementsByClassName('line-progress')[0]          
+          var texts = document.getElementsByClassName('progress')
+          range.addEventListener('change',function(){
               var value = this.value;
               
               if(value==100){
-                  text.innerText = '✔'
-                  text.style.color = '#00a854'
-                  circle.attr("stroke",'#00a854')
+                  setText(texts, '✔', '#00a854')
+                  setColor(circles, '#00a854')
               }else{
-                  text.innerText = value + '%';
-                  text.style.color = '#000'
-                  circle.attr("stroke", '#108ee9')
+                  setText(texts, value + '%', '#000')
+                  setColor(circles, '#108ee9')
               }
-              circle.attr("stroke-dasharray",value*2.9531 + ' ' +(100-value)*2.9531)
-          })
+              var circleArr = Array.prototype.slice.call(circles);
+              circleArr.forEach(function(circle,index,arr){
+                  circle.style.strokeDasharray = value * 2.9531 + ' ' + (100 - value) * 2.9531
+              })
+              line.style.strokeDasharray = value + ' ' + (100 - value)
+              
+          },false)
+
+          function setColor(doms,color){
+            var domArr = Array.prototype.slice.call(doms);
+            domArr.forEach(function(dom,index,arr){
+               dom.setAttribute('stroke',color)
+            })
+          }
+          function setText(doms,text,color){
+              var domArr = Array.prototype.slice.call(doms);
+              domArr.forEach(function(item,index,arr){
+                item.style.color = color;
+                item.innerText = text;
+              })
+          } 
     </script>
 </body>
 </html>

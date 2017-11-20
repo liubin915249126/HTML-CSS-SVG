@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>border animation</title>
+    <style type="text/css">
+      #shape{
+        stroke-width: 6px;
+        fill: transparent;
+        stroke: #009FFD;
+        stroke-dasharray: 85 400;
+        stroke-dashoffset: -220;
+        transition: 1s all ease
+      }
+      svg:hover #shape {
+        stroke-dasharray: 70 0;
+        stroke-width: 3px;
+        stroke-dashoffset: 0;
+        stroke: #06D6A0
+        }
+    </style>
+</head>
+<body>
+    <svg height="40" width="150">
+        <rect id="shape" height="40" width="150" />
+    </svg>
+</body>
+</html>
