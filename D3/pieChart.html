@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>pieChart</title>
+</head>
+
+<body>
+    <div>
+        <svg id="pieChart">
+
+        </svg>
+    </div>
+    <script src="./d3.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            drawPieChart();
+        }
+
+        function drawPieChart() {
+            const data = [];
+            const colorArr = [];
+            const total = 7;
+            // 随机生成数据
+            for (let i = 0; i <= total; i++) {
+                let dataObj = {
+                    age: i + 1,
+                    population: parseInt(Math.random() * 20 + 1)
+                }
+                data.push(dataObj);
+            }
+            // 随机生成颜色
+            for (let i = 0; i <= total; i++) {
+                let colornums = "0123456789abcdef";
+                let color = '#';
+                for (let j = 0 ; j < 6; j++){
+                    let randomNum = parseInt(Math.random()*15);
+                    let colorNum = colornums.slice(randomNum,randomNum+1);
+                    color += colorNum;
+                }
+                colorArr.push(color)
+            }
+            const margin = {
+                top: 80,
+                right: 20,
+                bottom: 30,
+                left: 60
+            };
+            let chartDom = document.querySelector('#pieChart');
+            const containerWidth = chartDom.parentElement.offsetWidth;
+            let width = 800 - margin.right - margin.left;
+            let height = 500 + margin.top + margin.bottom;
+            let chart = d3.select(chartDom).attr("width", width + margin.left + margin.right).attr("height",
+                height + margin.top + margin.bottom); // 设置总宽高
+            const radius = Math.min(width, height) / 2;
+            let g = chart.append("g").attr("transform", "translate(" + (width / 2 + margin.left) + "," + (margin.top +
+                radius) + ")"); // 设最外包层在总图上的相对位置
+            let colors = d3.scaleOrdinal()
+                .range(colorArr);
+
+            let arc = d3.arc() // 定义单个圆弧
+                .innerRadius(0)
+                .padAngle(0);
+
+            let startPointArc = d3.arc() // 定义单个圆弧里面的线条开始点所在的弧
+                .outerRadius(radius - 10)
+                .innerRadius(radius - 10);
+
+            let populationLabelArc = d3.arc() // 定义单个圆弧里面的population文字
+                .outerRadius(radius + 40)
+                .innerRadius(radius + 40);
+
+            let pie = d3.pie() // 定义饼图
+                .sort(null)
+                .value(function (d) {
+                    return d.population;
+                });
+
+            const sumData = d3.sum(data, function (d) {
+                return d.population;
+            });
+            colors.domain(d3.map(data, function (d) {
+                return d.age;
+            }).keys()); // 定义颜色值域
+
+            g.selectAll(".arc") // 画环图
+                .data(pie(data))
+                .enter().append("path")
+                .attr("cursor", "pointer")
+                .attr("class", "arc")
+                .attr('stroke', function (d) {
+                    return colors(d.data.age);
+                })
+                .style("fill", function (d) {
+                    return colors(d.data.age);
+                })
+                .each(function (d) { // 储存当前起始与终点的角度、并设为相等
+                    let tem = { ...d,
+                        endAngle: d.startAngle
+                    };
+                    d.outerRadius = radius - 10;
+                    this._currentData = tem;
+                })
+                .on("mouseover", arcTween(radius + 20, 0))　　　　.on("mouseout", arcTween(radius - 10, 150))
+                .transition()
+                .duration(100)
+                .delay(function (d, i) {
+                    return i * 100;
+                })
+                .attrTween("d", function (next) { // 动态设置d属性、生成动画
+                    debugger;
+                    var i = d3.interpolate(this._currentData, next);
+                    this._currentData = i(0);　 // 重设当前角度
+                    return function (t) {
+                        return arc(i(t));
+                    };
+                });
+            const arcs = pie(data); // 构造圆弧
+
+            let linkLine = g.append("g"); // 创建每条连接线
+            let links = [];
+            arcs.forEach(function (d) { // 输出age文字
+                const startPoint = startPointArc.centroid(d);
+                const endPoint = populationLabelArc.centroid(d);
+                links.push({
+                    source: [startPoint[0], startPoint[1]],
+                    target: [endPoint[0], endPoint[1]]
+                });
+            });
+
+            linkLine.selectAll()
+                .data(links)
+                .enter()
+                .append("path")
+                .attr("class", "link-line")
+                .style("stroke", "#999")
+                .style("stroke-width", 1)
+                .attr('fill', 'none')
+                .attr("d", d3.linkHorizontal().source(function (d) {
+                    return d.source;
+                }).target(function (d) {
+                    return d.target;
+                }));
+
+            let label = g.append("g");
+
+            function arcTween(outerRadius, delay) { // 设置缓动函数
+                return function () {
+                    d3.select(this).transition().delay(delay).attrTween("d", function (d) {
+                        var i = d3.interpolate(d.outerRadius, outerRadius);
+                        return function (t) {
+                            d.outerRadius = i(t);
+                            return arc(d);
+                        };
+                    });
+                };
+            }
+        }
+    </script>
+</body>
+
+</html>
