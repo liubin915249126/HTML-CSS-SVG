@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>tree</title>
+</head>
+
+<body>
+    <script src="./d3.v5.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        var treeData = {
+            name: "/",
+            contents: [{
+                    name: "Applications",
+                    contents: [{
+                            name: "Mail.app"
+                        },
+                        {
+                            name: "iPhoto.app"
+                        },
+                        {
+                            name: "Keynote.app"
+                        },
+                        {
+                            name: "iTunes.app"
+                        },
+                        {
+                            name: "XCode.app"
+                        },
+                        {
+                            name: "Numbers.app"
+                        },
+                        {
+                            name: "Pages.app"
+                        }
+                    ]
+                },
+                {
+                    name: "System",
+                    contents: []
+                },
+                {
+                    name: "Library",
+                    contents: [{
+                            name: "Application Support",
+                            contents: [{
+                                    name: "Adobe"
+                                },
+                                {
+                                    name: "Apple"
+                                },
+                                {
+                                    name: "Google"
+                                },
+                                {
+                                    name: "Microsoft"
+                                }
+                            ]
+                        },
+                        {
+                            name: "Languages",
+                            contents: [{
+                                    name: "Ruby"
+                                },
+                                {
+                                    name: "Python"
+                                },
+                                {
+                                    name: "Javascript"
+                                },
+                                {
+                                    name: "C#"
+                                }
+                            ]
+                        },
+                        {
+                            name: "Developer",
+                            contents: [{
+                                    name: "4.2"
+                                },
+                                {
+                                    name: "4.3"
+                                },
+                                {
+                                    name: "5.0"
+                                },
+                                {
+                                    name: "Documentation"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    name: "opt",
+                    contents: []
+                },
+                {
+                    name: "Users",
+                    contents: [{
+                            name: "pavanpodila"
+                        },
+                        {
+                            name: "admin"
+                        },
+                        {
+                            name: "test-user"
+                        }
+                    ]
+                }
+            ]
+        };
+
+        var tree = d3.tree()
+            //.sort(null)
+            .size([200, 200])
+        // .children(function (d) {
+        //     return (!d.contents || d.contents.length === 0) ? null : d.contents;
+        // });
+        var nodes = d3.hierarchy(treeData,function (d) {
+            return d.children;
+        });
+        // var links = tree(nodes);
+        /*
+      <svg>
+          <g class="container" />
+      </svg>
+   */
+        var svg = d3.select("body").append("svg")
+            .append("svg:svg").attr("width", 500).attr("height", 500)
+            g = svg.append("g")
+            .attr("class", "container")
+            .attr("width", 300).attr("height", 300)
+            .attr("transform", "translate(" + 100 + ",0)");
+
+
+        // Edges between nodes as a <path class="link" />
+        // var link = d3.diagonal()
+        //     .projection(function (d) {
+        //         return [d.y, d.x];
+        //     });
+        g.selectAll("path.link")
+            .data(nodes.descendants().slice(1))
+            .enter()
+            .append("svg:path")
+            .attr("class", "link")
+            .attr("d", function(d,i){
+                debugger;
+                return "M" + d.source.y + "," + d.source.x +
+                "C" + (d.source.y + d.target.y) / 2 + "," + d.source.x +
+                " " + (d.source.y + d.target.y) / 2 + "," + d.target.x +
+                " " + d.target.y + "," + d.target.x;
+            });
+
+
+        /*
+            Nodes as
+            <g class="node">
+                <circle class="node-dot" />
+                <text />
+            </g>
+         */
+        var nodeGroup = g.selectAll("g.node")
+            .data(nodes)
+            .enter()
+            .append("svg:g")
+            .attr("class", "node")
+            .attr("transform", function (d) {
+                return "translate(" + d.y + "," + d.x + ")";
+            });
+
+        nodeGroup.append("svg:circle")
+            .attr("class", "node-dot")
+            .attr("r", 10);
+
+        nodeGroup.append("svg:text")
+            .attr("text-anchor", function (d) {
+                return d.children ? "end" : "start";
+            })
+            .attr("dx", function (d) {
+                var gap = 2 * 10;
+                return d.children ? -gap : gap;
+            })
+            .attr("dy", 3)
+            .text(function (d) {
+                return d.name;
+            });
+    </script>
+</body>
+
+</html>

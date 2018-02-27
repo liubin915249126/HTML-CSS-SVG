@@ -111,7 +111,6 @@
                     return i * 100;
                 })
                 .attrTween("d", function (next) { // 动态设置d属性、生成动画
-                    debugger;
                     var i = d3.interpolate(this._currentData, next);
                     this._currentData = i(0);　 // 重设当前角度
                     return function (t) {
