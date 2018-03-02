@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>画半圆</title>
+</head>
+<body>
+    <svg viewBox="0 0 100 100" width="200" height="200">
+        <path class="ant-progress-circle-path" d="M 50,50 m 47,0
+        a 47,47 0 1 0 -94,0" stroke-linecap="round" stroke="#108ee9" stroke-width="6" fill-opacity="0" 
+        style="stroke-dasharray:295.31, 295.31;stroke-dashoffset: 0px;transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s, stroke-width 0.06s ease 0.3s;"></path>
+        <path class="ant-progress-circle-path" d="M 50,50 m 47,0
+        a 47,47 0 1 0 -94,0" stroke-linecap="round" stroke="#999" stroke-width="6" fill-opacity="0" 
+        style="stroke-dasharray:29.531, 295.31;stroke-dashoffset: 0px;transition: stroke-dashoffset 0.3s ease 0s, stroke-dasharray 0.3s ease 0s, stroke 0.3s, stroke-width 0.06s ease 0.3s;"></path>
+    </svg>
+    <input type="range" value="0" id="range"/>
+    <script type="text/javascript" src="./snap.svg.js"></script>
+    <script type="text/javascript" src="../d3.js"></script>
+    <script type="text/javascript">
+       var range = document.getElementById('range');
+       var path1 = document.getElementsByClassName('ant-progress-circle-path')[0];
+       var path2 = document.getElementsByClassName('ant-progress-circle-path')[1];
+       range.addEventListener('change',function(){
+        var value = this.value/2;
+        d3.select(path2).style("stroke-dasharray","0,295.31")
+          .ease() 
+        },false)
+
+    </script>
+</body>
+</html>

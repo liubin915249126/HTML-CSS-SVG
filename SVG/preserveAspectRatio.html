@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>preserveAspectRatio</title>
+</head>
+<body>
+        <svg id="svg" width="400" height="200" viewBox="0 0 100 100" preserveAspectRatio="xMinYMin meet" style="border:1px solid #cd0000;">
+                <rect x="10" y="10" width="80" height="80" fill="#cd0000"/>
+            </svg>
+            <p>meet/slice：<select id="select0">
+                <option value="meet" selected>meet</option>
+                <option value="slice">slice</option>
+            </select></p>
+            <p>x方向：<select id="select1">
+                <option value="xMin" selected>xMin</option>
+                <option value="xMid">xMid</option>
+                <option value="xMax">xMax</option>
+            </select></p>
+            <p>y方向：<select id="select2">
+                <option value="YMin" selected>YMin</option>
+                <option value="YMid">YMid</option>
+                <option value="YMax">YMax</option>
+            </select></p>
+        <script type="text/javascript">
+            var svg = document.getElementById("svg"),
+                select0 = document.getElementById("select0"), 
+                select1 = document.getElementById("select1"), 
+                select2 = document.getElementById("select2");
+                
+            if (svg && select0 && select1 && select2) {
+                [select0, select1, select2].forEach(function(select) {
+                    select.onchange = function() {
+                        svg.setAttribute("preserveAspectRatio", select1.value + select2.value + " " + select0.value);
+                    }
+                });
+            }
+        </script>    
+</body>
+</html>

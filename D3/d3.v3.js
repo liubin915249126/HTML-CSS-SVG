@@ -667,7 +667,6 @@
       }
       function attrFunction() {
         var x = value.apply(this, arguments);
-        debugger;
         if (x == null) this.removeAttribute(name); else this.setAttribute(name, x);
       }
       function attrFunctionNS() {
