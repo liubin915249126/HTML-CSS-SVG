@@ -5,13 +5,16 @@
 > 
 #### SVG viewBox
 >
+```
 <svg width="500" height="300"></svg>
 viewport svg 实际大小
 viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，width:宽度，height:高度
 视区盒子
 ![viewBox](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/viewbox.gif);
+
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
+```
 >
 #### 基本形状
 >
