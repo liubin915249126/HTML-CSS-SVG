@@ -5,16 +5,14 @@
 > 
 #### SVG viewBox
 >
-```
 <svg width="500" height="300"></svg>
 viewport svg 实际大小
 viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，width:宽度，height:高度
 视区盒子
 ![viewBox](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/viewbox.gif);
-
+</br> 
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
-```
 >
 #### 基本形状
 >
@@ -86,5 +84,12 @@ stroke-dashoffset: 表示虚线的起始偏移
   T x y (or t dx dy)
     和之前一样，快捷命令T会通过前一个控制点，推断出一个新的控制点。这意味着，在你的第一个控制点后面，可以只定义终点，就创建出一个相当复杂的曲线。需要注意的是，T命令前面必须是一个Q命令，或者是另一个T命令，才能达到这种效果。如果T单独使用，那么控制点就会被认为和终点是同一个点，所以画出来的将是一条直线。     
 ```
+
+三次贝塞尔曲线C:![三次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/Cubic_Bezier_Curves.png)
+三次贝塞尔曲线S:![三次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/ShortCut_Cubic_Bezier.png)
+
+二次贝塞尔曲线Q:![二次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/Quadratic_Bezier.png)
+二次贝塞尔曲线T:![二次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/Shortcut_Quadratic_Bezier.png)
+
 参考文档[MDN](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths);
 >
