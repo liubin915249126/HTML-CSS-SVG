@@ -9,30 +9,32 @@
 viewport svg 实际大小
 viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，width:宽度，height:高度
 视区盒子
-
+![viewBox](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/viewbox.gif);
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
 >
 #### 基本形状
 >
-矩形 <rect>: x:矩形左上角的x坐标
-            y:矩形左上角的y坐标
-            width:矩形的宽度
-            height:矩形的高度
-            rx:对于圆角矩形,圆角对应的椭圆在x方向上的半径
-            ry:对于圆角矩形,圆角对应的椭圆在y方向上的半径
-圆 <circle> cx:圆心的x坐标
-            cy:圆心的y坐标
-            r:圆的半径
-椭圆 <ellipse> cx:椭圆心的x坐标
-              cy:椭圆心的y坐标
+```
+矩形 <rect: x:矩形左上角的x坐标  
+            y:矩形左上角的y坐标  
+            width:矩形的宽度 
+            height:矩形的高度  
+            rx:对于圆角矩形,圆角对应的椭圆在x方向上的半径  
+            ry:对于圆角矩形,圆角对应的椭圆在y方向上的半径  
+圆 <ircle cx:圆心的x坐标  
+            cy:圆心的y坐标  
+            r:圆的半径  
+椭圆 ellipse cx:椭圆心的x坐标  
+              cy:椭圆心的y坐标  
               rx:椭圆的x轴半径   
-              ry:椭圆的Y轴半径
-线段 <line>  x1:起点的x坐标
-            y1:起点的y坐标
-            x2:终点的x坐标
-            y2:重点的y坐标
-多边形 <polygon> points各个点的坐标                                                     
+              ry:椭圆的Y轴半径  
+线段 line  x1:起点的x坐标  
+            y1:起点的y坐标  
+            x2:终点的x坐标  
+            y2:重点的y坐标  
+多边形 polygon points各个点的坐标
+```                                                      
 >
 #### path基本相关属性
 >
@@ -45,9 +47,11 @@ preserveAspectRatio()
 >
 #### stroke-dasharray,stroke-dashoffset
 >
+```
 stroke-dasharray:绘制虚线:一个参数时： 表示一段虚线长度和每段虚线之间的间距 
                           两个参数或者多个参数时：一个表示长度，一个表示间距 
 stroke-dashoffset: 表示虚线的起始偏移                     
+```
 >
 #### path d 路径相关
 >
