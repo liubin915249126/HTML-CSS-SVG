@@ -116,6 +116,7 @@ stroke-dashoffset: 表示虚线的起始偏移
               L 275 230 Z" fill="blue"/>
    </svg> 
 ```
+![A](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/SVGArcs_Flags.png)
 
 参考文档[MDN](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths);
 >
