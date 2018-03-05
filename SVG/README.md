@@ -69,6 +69,8 @@ stop的属性
   stop-color: 定义offset结点位置的颜色
   stop-opacity: 定义颜色结点的透明度，值从0到1，或0%到100%。
 ```
+焦点属性：
+![focus](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/SVG_Radial_Grandient_Focus.png)
 >
 
 #### 基本形状
