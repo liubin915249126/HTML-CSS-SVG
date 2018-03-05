@@ -99,7 +99,10 @@ stroke-dashoffset: 表示虚线的起始偏移
 
 二次贝塞尔曲线Q:![二次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/Quadratic_Bezier.png)
 二次贝塞尔曲线T:![二次贝塞尔曲线](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/Shortcut_Quadratic_Bezier.png)
+>
 
+>
+弧线命令A：
 ```
    <svg width="325px" height="325px" version="1.1" xmlns="http://www.w3.org/2000/svg">
       <path d="M80 80
