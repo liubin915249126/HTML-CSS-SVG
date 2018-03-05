@@ -9,6 +9,7 @@
 viewport svg 实际大小
 </br>
 viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，width:宽度，height:高度
+</br>
 视区盒子：以视区盒子大小选中元素然后缩放至viewport的大小
 
 ![viewBox](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/viewbox.gif);
