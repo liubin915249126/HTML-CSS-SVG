@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>立方体</title>
+    <style type="text/css">
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            100% {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
+        }
+
+        html {
+            background: linear-gradient(#ff0 0%, #000 80%);
+            height: 100%;
+        }
+
+        .wrap {
+            margin-top: 200px;
+            perspective: 1000px;
+        }
+
+        .cube {
+            width: 200px;
+            height: 200px;
+            position: relative;
+            color: #fff;
+            font-size: 36px;
+            font-weight: bold;
+            text-align: center;
+            line-height: 200px;
+            transform-style: preserve-3d;
+            transform: rotateX(-30deg) rotateY(-70deg);
+            animation: rotate 20s infinite linear;
+        }
+
+        .cube>div {
+            width: 100%;
+            height: 100%;
+            border: 1px solid #fff;
+            position: absolute;
+            background-color: #333;
+            opacity: .6;
+            transition: transform 0.4s ease-in;
+        }
+
+        .cube .out-front {
+            transform: translateZ(100px);
+        }
+
+        .cube .out-back {
+            transform: translateZ(-100px) rotateY(180deg);
+        }
+
+        .cube .out-left {
+            transform: translateX(-100px) rotateY(-90deg);
+        }
+
+        .cube .out-right {
+            transform: translateX(100px) rotateY(90deg);
+        }
+
+        .cube .out-top {
+            transform: translateY(-100px) rotateX(90deg);
+        }
+
+        .cube .out-bottom {
+            transform: translateY(100px) rotateX(-90deg);
+        }
+
+        .cube>span {
+            display: block;
+            width: 100px;
+            height: 100px;
+            border: 1px solid black;
+            background-color: #999;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+        }
+
+        .cube .in-front {
+            transform: translateZ(50px);
+        }
+
+        .cube .in-back {
+            transform: translateZ(-50px) rotateY(180deg);
+        }
+
+        .cube .in-left {
+            transform: translateX(-50px) rotateY(-90deg);
+        }
+
+        .cube .in-right {
+            transform: translateX(50px) rotateY(90deg);
+        }
+
+        .cube .in-top {
+            transform: translateY(-50px) rotateX(90deg);
+        }
+
+        .cube .in-bottom {
+            transform: translateY(50px) rotateX(-90deg);
+        }
+        /* hover 效果 */
+        .wrap:hover .out-front {
+            transform: translateZ(200px);
+        }
+
+        .wrap:hover .out-back {
+            transform: translateZ(-200px) rotateY(180deg);
+        }
+
+        .wrap:hover .out-left {
+            transform: translateX(-200px) rotateY(-90deg);
+        }
+
+        .wrap:hover .out-right {
+            transform: translateX(200px) rotateY(90deg);
+        }
+
+        .wrap:hover .out-top {
+            transform: translateY(-200px) rotateX(90deg);
+        }
+
+        .wrap:hover .out-bottom {
+            transform: translateY(200px) rotateX(-90deg);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <div class="cube">
+            <div class="out-front">前面</div>
+            <div class="out-back">后面</div>
+            <div class="out-left">左面</div>
+            <div class="out-right">右面</div>
+            <div class="out-top">上面</div>
+            <div class="out-bottom">下面</div>
+
+            <span class="in-front"></span>
+            <span class="in-back"></span>
+            <span class="in-left"></span>
+            <span class="in-right"></span>
+            <span class="in-top"></span>
+            <span class="in-bottom"></span>
+        </div>
+    </div>
+    <script type="text/javascript" src="../jquery.js"></script>
+    <script type="text/javascript">
+        window.onload = function () {
+            animation();
+        }
+
+        function animation() {
+            var cube = document.getElementsByClassName('cube')[0];
+            var outs = cube.getElementsByTagName('div');
+            cube.addEventListener('mouseenter', function () {
+                Array.prototype.slice.call(outs).forEach((out, index, outs) => {
+                    var styles = document.defaultView.getComputedStyle(out, null);
+                    debugger;
+                })
+            }, false)
+        }
+    </script>
+</body>
+
+</html>
