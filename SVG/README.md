@@ -15,6 +15,33 @@ viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
 >
+#### 渐变
+>
+先定义在引用
+```
+   <svg width="660" height="220">
+        <defs>
+            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#05a" />
+                <stop offset="50%" stop-color="#a55" />
+                <stop offset="100%" stop-color="#0a5" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <svg width="660" height="220">
+        <rect x="10" y="10" width="600" height="200" fill="url(#linear)" />
+    </svg>
+    <svg width="660" height="220"> 
+        <rect x="10" y="10" width="600" height="200" stroke="url(#linear)" stroke-width="20" fill="#fff"/>
+    </svg>
+```
+spreadMethod属性
+```
+  pad: （默认值）使用渐变的颜色结点来填充剩余的空间。例如，如果第一个结点是20%，那么0%到20%这部分就是相同的颜色。
+  reflect: 映射渐变图案，从'start-to-end'，再从'end-to-start'，然后'start-to-end'，直到空间都填满了。
+  repeat: 重复渐变图案，从起点->终点，直到空间填满。
+```
+>
 #### 基本形状
 >
 ```
@@ -119,7 +146,9 @@ stroke-dashoffset: 表示虚线的起始偏移
               L 275 230 Z" fill="blue"/>
    </svg> 
 ```
+
 ![A](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/SVGArcs_Flags.png)
+
 
 参考文档[MDN](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths);
 >

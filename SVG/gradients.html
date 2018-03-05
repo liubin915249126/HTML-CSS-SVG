@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SVG 渐变</title>
+</head>
+
+<body>
+    <svg width="660" height="220">
+        <defs>
+            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="#05a" />
+                <stop offset="50%" stop-color="#a55" />
+                <stop offset="100%" stop-color="#0a5" />
+            </linearGradient>
+        </defs>
+    </svg>
+    <svg width="660" height="220">
+        <rect x="10" y="10" width="600" height="200" fill="url(#linear)" />
+    </svg>
+    <svg width="660" height="220"> 
+        <rect x="10" y="10" width="600" height="200" stroke="url(#linear)" stroke-width="20" fill="#fff"/>
+    </svg>
+</body>
+
+</html>
