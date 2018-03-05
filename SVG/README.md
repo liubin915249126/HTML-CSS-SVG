@@ -69,8 +69,11 @@ stop的属性
   stop-color: 定义offset结点位置的颜色
   stop-opacity: 定义颜色结点的透明度，值从0到1，或0%到100%。
 ```
-焦点属性：
+gradientUnit属性和spreadMethod属性类似于线性渐变
+
+焦点：
 ![focus](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/SVG_Radial_Grandient_Focus.png)
+
 >
 
 #### 基本形状
@@ -139,7 +142,7 @@ stroke-dashoffset: 表示虚线的起始偏移
     x1 y1 控制点确定起点终点的斜率
     x y 终点坐标
 
-  T x y (or t dx dy)
+  T 二次贝塞尔曲线 x y (or t dx dy)
     和之前一样，快捷命令T会通过前一个控制点，推断出一个新的控制点。这意味着，在你的第一个控制点后面，
     可以只定义终点，就创建出一个相当复杂的曲线。需要注意的是，T命令前面必须是一个Q命令，或者是另一个T命令，
     才能达到这种效果。如果T单独使用，那么控制点就会被认为和终点是同一个点，所以画出来的将是一条直线。 
