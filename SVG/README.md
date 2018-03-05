@@ -9,11 +9,14 @@
 viewport svg 实际大小
 </br>
 viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，width:宽度，height:高度
-视区盒子
+视区盒子：以视区盒子大小选中元素然后缩放至viewport的大小
+
 ![viewBox](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/viewbox.gif);
 </br> 
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
+
+参考文章 [张鑫旭](http://www.zhangxinxu.com/wordpress/2014/08/svg-viewport-viewbox-preserveaspectratio/)
 >
 #### 渐变
 ##### 线性渐变
