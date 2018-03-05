@@ -16,8 +16,9 @@ preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
 >
 #### 渐变
+##### 线性渐变
 >
-先定义在引用
+先定义再引用
 ```
    <svg width="660" height="220">
         <defs>
@@ -35,6 +36,11 @@ preserveAspectRatio()
         <rect x="10" y="10" width="600" height="200" stroke="url(#linear)" stroke-width="20" fill="#fff"/>
     </svg>
 ```
+gradientUnit属性
+```
+  userSpaceOnUse:(默认值) x1、y1、x2、y2表示当前用户坐标系统的坐标。也就是说渐变中的值都是绝对值。
+  objectBoundingBox: x1, y1, x2, y2表示应用渐变的元素创建的边界坐标系统。也就是说渐变随着应用的元素进行了缩放。
+```
 spreadMethod属性
 ```
   pad: （默认值）使用渐变的颜色结点来填充剩余的空间。例如，如果第一个结点是20%，那么0%到20%这部分就是相同的颜色。
@@ -42,6 +48,29 @@ spreadMethod属性
   repeat: 重复渐变图案，从起点->终点，直到空间填满。
 ```
 >
+##### 径向渐变
+>
+先定义再引用
+``` 
+   <svg width="660" height="330">
+        <defs>
+            <radialGradient id="radial" fx="50%" fy="50%" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#05a" stop-opacity="1" />
+                <stop offset="100%" stop-color="#0a5" stop-opacity="1" /> 
+            </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="600" height="300" fill="url(#radial)" /> 
+    </svg>
+
+```
+stop的属性
+```
+  offset: 在径向渐变中，它表示从点(fx,fy)到外边缘的圆的百分比值距离。它定义了渐变结点的位置。值从0到1之间，或者0%到100%。
+  stop-color: 定义offset结点位置的颜色
+  stop-opacity: 定义颜色结点的透明度，值从0到1，或0%到100%。
+```
+>
+
 #### 基本形状
 >
 ```

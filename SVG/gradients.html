@@ -9,9 +9,10 @@
 </head>
 
 <body>
+    <h3>线性渐变</h3>
     <svg width="660" height="220">
         <defs>
-            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%">
+            <linearGradient id="linear" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnit=“objectBoundingBox”>
                 <stop offset="0%" stop-color="#05a" />
                 <stop offset="50%" stop-color="#a55" />
                 <stop offset="100%" stop-color="#0a5" />
@@ -19,11 +20,71 @@
         </defs>
     </svg>
     <svg width="660" height="220">
-        <rect x="10" y="10" width="600" height="200" fill="url(#linear)" />
+        <rect x="10" y="10" width="400" height="200" fill="url(#linear)" />
     </svg>
-    <svg width="660" height="220"> 
-        <rect x="10" y="10" width="600" height="200" stroke="url(#linear)" stroke-width="20" fill="#fff"/>
+    <svg width="660" height="220">
+        <rect x="10" y="10" width="600" height="200" stroke="url(#linear)" stroke-width="20" fill="#fff" />
     </svg>
+    <h3>径向渐变</h3>
+    <svg width="600" height="600">
+        <defs>
+            <radialGradient id="radial" fx="50%" fy="50%" cx="50%" cy="50%" r="50%" gradientUnits="userSpaceOnUse" spreadMethod="pad">
+                <stop offset="0%" stop-color="#05a" stop-opacity="1" />
+                <stop offset="50%" stop-color="#0a5" stop-opacity="1" />
+                <stop offset="100%" stop-color="#000" stop-opacity="1" />
+            </radialGradient>
+        </defs>
+        <rect x="0" y="0" width="600" height="600" fill="url(#radial)" />
+    </svg>
+    <div id="radialChange">
+        fx:
+        <input type="range" id="fx" />fy:
+        <input type="range" id="fy" />cx:
+        <input type="range" id="cx" />cy:
+        <input type="range" id="cy" />
+        r:<input type="range" id="r" /> 
+        gradientUnits:
+        <select id="gradientUnits">
+            <option value="userSpaceOnUse">userSpaceOnUse(默认)</option>
+            <option value="objectBoundingBox">objectBoundingBox</option>
+        </select>
+        spreadMethod:
+        <select id="spreadMethod">
+            <option value="pad">pad(默认)</option>
+            <option value="repeat">repeat</option>
+            <option value="reflect">reflect</option>
+        </select>
+    </div>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            radial()
+        }
+        //径向渐变
+        function radial() {
+            changeValue("fx","fx")
+            changeValue("fy","fy")
+            changeValue("cx","cx")
+            changeValue("cy","cy")
+            changeValue("r","r")
+            changeValue("gradientUnits","gradientUnits")
+            changeValue("spreadMethod","spreadMethod")
+        }
+        function changeValue(id, type) {
+            var radialChange = document.getElementById('radialChange');
+            var radialDef = document.getElementById('radial');
+            var input = radialChange.querySelector("#"+id);
+            input.addEventListener('change', function () {
+                var value = this.value;
+                if((/\d/ig).test(value)){
+                    radialDef.setAttribute(type, value+"%");
+                }else{
+                    radialDef.setAttribute(type, value);
+                }
+                
+            }, false)
+        }
+    </script>
 </body>
 
 </html>
