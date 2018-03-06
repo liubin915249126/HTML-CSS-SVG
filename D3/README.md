@@ -195,3 +195,7 @@ demo:
 [博客](https://www.cnblogs.com/fastmover/p/7779660.html)
 [github](https://github.com/nelsonkuang/ant-admin/)
 [d3:v3-v4](https://iros.github.io/d3-v4-whats-new/#70)
+
+#### 封装库
+[stockcharts](https://github.com/rrag/react-stockcharts)
+[chanjs](https://github.com/andredumas/techan.js) k线图
