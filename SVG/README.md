@@ -16,7 +16,11 @@ viewBox="x, y, width, height"  // x:左上角横坐标，y:左上角纵坐标，
 </br> 
 preserveAspectRatio()
 第1个值表示，viewBox如何与SVG viewport对齐；第2个值表示，如何维持高宽比（如果有)
-
+```
+  meet	保持纵横比同时比例大的方向缩放适应viewport
+  slice	保持纵横比同时比例小的方向缩放适应viewport
+  none	扭曲纵横比以充分适应viewport 
+```
 参考文章 [张鑫旭](http://www.zhangxinxu.com/wordpress/2014/08/svg-viewport-viewbox-preserveaspectratio/)
 >
 #### 渐变
