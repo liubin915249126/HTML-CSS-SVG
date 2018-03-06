@@ -42,7 +42,7 @@
             line-height: 200px;
             transform-style: preserve-3d;
             transform: rotateX(-30deg) rotateY(-70deg);
-            animation: rotate 20s infinite linear;
+            /* animation: rotate 20s infinite linear; */
         }
 
         .cube>div {
@@ -113,7 +113,9 @@
         .cube .in-bottom {
             transform: translateY(50px) rotateX(-90deg);
         }
+
         /* hover 效果 */
+
         .wrap:hover .out-front {
             transform: translateZ(200px);
         }
@@ -137,6 +139,44 @@
         .wrap:hover .out-bottom {
             transform: translateY(200px) rotateX(-90deg);
         }
+
+        .button {
+            width: 200px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        input {
+            width: 50px;
+            height: 30px;
+            position: absolute;
+            cursor: pointer;
+        }
+
+        input:nth-child(1) {
+            left: 100px;
+            top: 0;
+        }
+
+        input:nth-child(2) {
+            left: 200px;
+            top: 50px;
+        }
+
+        input:nth-child(3) {
+            left: 0px;
+            top: 50px;
+        }
+
+        input:nth-child(4) {
+            left: 100px;
+            top: 100px;
+        }
+
+        input:nth-child(5) {
+            left: 100px;
+            top: 50px;
+        }
     </style>
 </head>
 
@@ -158,22 +198,68 @@
             <span class="in-bottom"></span>
         </div>
     </div>
-    <script type="text/javascript" src="../jquery.js"></script>
+    <div class="button">
+        <input type="button" value="上">
+        <input type="button" value="右">
+        <input type="button" value="左">
+        <input type="button" value="下">
+        <input type="button" value="重置">
+    </div>
     <script type="text/javascript">
-        window.onload = function () {
-            animation();
+        var ul = document.getElementsByClassName('cube')[0];
+        var inputs = document.getElementsByTagName('input');
+        var x = 0,
+            y = 0;
+        /////////////////////////鼠标控制
+        for (var i = 0; i < inputs.length; i++) {
+            inputs[i].onclick = run;
         }
 
-        function animation() {
-            var cube = document.getElementsByClassName('cube')[0];
-            var outs = cube.getElementsByTagName('div');
-            cube.addEventListener('mouseenter', function () {
-                Array.prototype.slice.call(outs).forEach((out, index, outs) => {
-                    var styles = document.defaultView.getComputedStyle(out, null);
-                    debugger;
-                })
-            }, false)
+        function run() {
+            ul.style.webkitTransition = '-webkit-transform 3s linear'; //设置立方体变换的属性、持续时间、动画类型
+            if (inputs[0] == this) {
+                x += 90;
+            }
+            if (inputs[1] == this) {
+                y += 90;
+            }
+            if (inputs[2] == this) {
+                y -= 90;
+            }
+            if (inputs[3] == this) {
+                x -= 90;
+            }
+            if (inputs[4] == this) {
+                x = 0;
+                y = 0;
+                ul.style.webkitTransition = '-webkit-transform 0.1s linear';
+            } //当点击重置按钮时，迅速转回到初始状态。
+            ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)"; //变换效果（沿X轴和Y轴旋转）
         }
+        ////////////////////////键盘控制
+        document.addEventListener('keydown', function (e) {
+            ul.style.webkitTransition = '-webkit-transform 3s linear';
+            switch (e.keyCode) {
+                case 37:
+                    y -= 90; //左箭头
+                    break;
+                case 38:
+                    x += 90; //上箭头
+                    break;
+                case 39:
+                    y += 90; //下箭头
+                    break;
+                case 40:
+                    x -= 90; //右箭头
+                    break;
+                case 13:
+                    x = 0;
+                    y = 0; //回车 （当回车时，迅速转回初始状态）
+                    ul.style.webkitTransition = '-webkit-transform 0.1s linear';
+                    break;
+            }
+            ul.style.webkitTransform = "rotateX(" + x + "deg) rotateY(" + y + "deg)"; //变换效果（沿X轴和Y轴旋转）
+        }, false);
     </script>
 </body>
 
