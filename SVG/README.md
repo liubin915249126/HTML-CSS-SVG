@@ -194,3 +194,7 @@ stroke-dashoffset: 表示虚线的起始偏移
 
 参考文档[MDN](https://developer.mozilla.org/zh-CN/docs/Web/SVG/Tutorial/Paths);
 >
+#### 应用
+![半圆](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/half.gif)
+![loading](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/loading.gif)
+![hover](https://github.com/liubin915249126/HTML-CSS-SVG/blob/master/SVG/image/hover.gif)
