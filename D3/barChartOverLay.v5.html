@@ -14,7 +14,7 @@
 
         </svg>
     </div>
-    <script src="./d3.js" type="text/javascript"></script>
+    <script src="./d3.v5.js" type="text/javascript"></script>
     <!-- <script src="http://d3js.org/d3.v3.min.js"></script> -->
     <script src="https://cdn.bootcss.com/d3-tip/0.8.0-alpha.1/d3-tip.js"></script>
     <script type="text/javascript">
@@ -24,18 +24,30 @@
 
         function drawBarChart() {
             let data = [];
-            for (let i = 0; i <= 7; i++) {
-                let dataObj = {
-                    letter: i + 1,
-                    frequency: parseInt(Math.random() * 20 + 1)
+            let dataset = [];
+            for (let j = 0; j < 3; j++) {
+                for (let i = 0; i <= 7; i++) {
+                    let dataObj = {
+                        letter: i + 1,
+                        frequency: parseInt(Math.random() * 20 + 1)
+                    }
+                    data.push(dataObj);
                 }
-                data.push(dataObj);
+                dataset.push(data);
             }
+            var stack = d3.stack();
+            dataset = stack(dataset);
             const margin = {
                 top: 80,
                 right: 20,
                 bottom: 30,
                 left: 60
+            };
+            var color_hash = {
+                0: ["Invite", "#1f77b4"],
+                1: ["Accept", "#2ca02c"],
+                2: ["Decline", "#ff7f0e"]
+
             };
             let chartDom = document.querySelector('#barChart');
             const containerWidth = chartDom.parentElement.offsetWidth;
@@ -43,9 +55,11 @@
             let height = 500 + margin.top + margin.bottom;
             let chart = d3.select(chartDom).attr("width", width + margin.left + margin.right).attr("height", height +
                 margin.top + margin.bottom);
+
             let x = d3.scaleBand().rangeRound([0, width]).padding(0.1).domain(data.map(function (d) {
                 return d.letter
             })); // 设置x轴
+
             let y = d3.scaleLinear().rangeRound([height, 0]).domain([0, d3.max(data, function (d) {
                 return d.frequency
             })]); // 设置y轴
@@ -63,8 +77,6 @@
                 .attr('class', 'd3-tip')
                 .offset([-10, 0])
                 .html(function (d) {
-                    var x =d3.event.pageX;  
-                    var y =d3.event.pageY+30;
                     return "<strong>星期" + d.letter + "<br>空置率:</strong> <span style='color:#ffeb3b'>" + (d.frequency *
                         100).toFixed(2) + "%</span>";
                 });
@@ -106,31 +118,69 @@
                 .attr('y', function (d, i) {
                     return y((d + 1) * stepMaxFrequency / 100);
                 });
-            g.selectAll(".bar") // 画柱图
-                .data(data)
-                .enter().append("rect")
-                .on('mouseover', tip.show)
-                .on('mouseout', tip.hide)
-                .attr("class", "bar")
-                .attr("fill", "#8a2be2")
-                .attr("x", function (d) {
-                    return x(d.letter);
+
+            let groups = g.selectAll('g.rgroups')
+                .data(dataset)
+                .enter()
+                .append("g")
+                .attr("class", "rgroups")
+                .attr("transform", "translate(" + margin.left + "," + (height - margin.bottom) + ")")
+                .style("fill", function (d, i) {
+                    return color_hash[dataset.indexOf(d)][1];
+                });
+
+            var rects = groups.selectAll("rect")
+                .data(function (d) {
+                    return d;
                 })
-                .attr("y", height) // 控制动画由下而上
-                .attr("width", x.bandwidth())
-                .attr("height", 0) // 控制动画由下而上
-                .transition()
-                .duration(200)
+                .enter()
+                .append("rect")
+                .attr("width", 2)
+                .style("fill-opacity", 1e-6);
+                
+            rects.transition()
+                .duration(function (d, i) {
+                    return 250 * i;
+                })
                 .ease(d3.easeBounceInOut)
-                .delay(function (d, i) {
-                    return i * 200;
+                .attr("x", function (d) {
+                    return x(parseInt(d.letter));
                 })
                 .attr("y", function (d) {
-                    return y(d.frequency);
+                    debugger;
+                    return -(-y(d.y0) - y(d.y) + (height - margin.top - margin.bottom) * 2);
                 })
                 .attr("height", function (d) {
-                    return height - y(d.frequency);
-                });
+                    debugger;
+                    return y(d.frequency) + (height - margin.top - margin.bottom);
+                })
+                .attr("width", 15)
+                .style("fill-opacity", 1);
+            // g.selectAll(".bar") // 画柱图
+            //     .data(dataset)
+            //     .enter().append("rect")
+            //     .on('mouseover', tip.show)
+            //     .on('mouseout', tip.hide)
+            //     .attr("class", "bar")
+            //     .attr("fill", "#8a2be2")
+            //     .attr("x", function (d) {
+            //         return x(d.letter);
+            //     })
+            //     .attr("y", height) // 控制动画由下而上
+            //     .attr("width", x.bandwidth())
+            //     .attr("height", 0) // 控制动画由下而上
+            //     .transition()
+            //     .duration(200)
+            //     .ease(d3.easeBounceInOut)
+            //     .delay(function (d, i) {
+            //         return i * 200;
+            //     })
+            //     .attr("y", function (d) {
+            //         return y(d.frequency);
+            //     })
+            //     .attr("height", function (d) {
+            //         return height - y(d.frequency);
+            //     });
             g.append('g') // 输出柱图上的数值
                 .attr('class', 'bar--text')
                 .selectAll('text')
@@ -151,9 +201,7 @@
                 .text(function (d) {
                     return (d.frequency * 100).toFixed(2) + '%';
                 })
-                .on('mouseover', function(d,i,t){
-                    tip.show(d);
-                })
+                .on('mouseover', tip.show)
                 .on('mouseout', tip.hide);
 
 

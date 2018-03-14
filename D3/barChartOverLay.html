@@ -653,7 +653,7 @@
                 }
             ]
         ]
-
+        // var dataset = dataset[0]; 
         var w = 600; //width
         var h = 500; //height
         var padding = {
@@ -669,7 +669,7 @@
 
         //Data, stacked
         stack(dataset);
-
+        console.log(dataset);
         var color_hash = {
             0: ["Invite", "#1f77b4"],
             1: ["Accept", "#2ca02c"],
@@ -781,7 +781,6 @@
             .enter()
             .append('g')
             .each(function (d, i) {
-                debugger;
                 var g = d3.select(this);
                 g.append("rect")
                     .attr("x", w - padding.right - 65)
