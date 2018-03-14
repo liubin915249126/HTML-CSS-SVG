@@ -35,7 +35,6 @@
         return d;
     }, function (error, data) {
         if (error) throw error;
-
         var keys = data.columns.slice(1);
 
         data.sort(function (a, b) {
@@ -48,7 +47,6 @@
             return d.total;
         })]).nice();
         z.domain(keys);
-
         g.append("g")
             .selectAll("g")
             .data(d3.stack().keys(keys)(data))
@@ -64,14 +62,16 @@
             .attr("x", function (d) {
                 return x(d.data.State);
             })
+            .transition().duration(500).ease(d3.easeLinear)
             .attr("y", function (d) {
                 return y(d[1]);
             })
+            //.transition().duration(500).ease(d3.easeLinear)
             .attr("height", function (d) {
                 return y(d[0]) - y(d[1]);
             })
             .attr("width", x.bandwidth());
-
+            
         g.append("g")
             .attr("class", "axis")
             .attr("transform", "translate(0," + height + ")")

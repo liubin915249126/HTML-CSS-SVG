@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<style>
+    .axis .domain {
+        display: none;
+    }
+</style>
+<svg width="960" height="500"></svg>
+<!-- <script src="https://d3js.org/d3.v4.min.js"></script> -->
+<script src="../d3.v5.js"></script>
+<script>
+    var svg = d3.select("svg"),
+        margin = {
+            top: 20,
+            right: 20,
+            bottom: 30,
+            left: 40
+        },
+        width = +svg.attr("width") - margin.left - margin.right,
+        height = +svg.attr("height") - margin.top - margin.bottom,
+        g = svg.append("g").attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var x = d3.scaleBand()
+        .rangeRound([0, width])
+        .paddingInner(0.05)
+        .align(0.1);
+
+    var y = d3.scaleLinear()
+        .rangeRound([height, 0]);
+
+    var z = d3.scaleOrdinal()
+        .range(["#98abc5", "#8a89a6", "#7b6888", "#6b486b", "#a05d56", "#d0743c", "#ff8c00"]);
+    //生成数据    
+    var dataset = {
+        state: ['A', 'B', 'C', 'D'],
+    };
+
+    function generateData() {
+        var length = dataset.state.length;
+        var data = [];
+        for (let i = 0; i < length; i++) {
+            var num = parseInt(Math.random() * 10);
+            data.push(num);
+        }
+        return data;
+    }
+    dataset['UA'] = generateData();
+    dataset['LA'] = generateData();
+    dataset['UC'] = generateData();
+    // 转换数据
+    dataset.newState = dataset.state.map(function (d, i) {
+        var newState = {
+            state: d
+        };
+        var total = 0;
+        for (let key in dataset) {
+            if (key !== 'state') {
+                total += dataset[key][i]
+            }
+        }
+        newState.total = total;
+        return newState;
+    })
+    console.log(dataset)
+
+    //输入输出 
+    x.domain(function () {
+        var arr = [];
+        for (let key in dataset) {
+            arr.push(key);
+        }
+        return arr.slice(1);
+    });
+
+    y.domain([0, d3.max(dataset.newState, function (d) {
+        return d.total;
+    })]).nice();
+    z.domain(dataset.state);
+    //绑定数据
+    g.append("g")
+        .selectAll("g")
+        .data(d3.stack().keys(dataset.state)(function(d,i){
+            
+        }))
+        .enter().append("g")
+        .attr("fill", function (d) {
+            return z(d.key);
+        })
+        .selectAll("rect")
+        .data(function (d) {
+            return d;
+        })
+        .enter().append("rect")
+        .attr("x", function (d) {
+            return x(d.data.State);
+        })
+        .attr("y", function (d) {
+            return y(d[1]);
+        })
+        .attr("height", function (d) {
+            return y(d[0]) - y(d[1]);
+        })
+        .attr("width", x.bandwidth());
+</script>
