@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>两栏布局</title>
+    <style type="text/css">
+        body,
+        html,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container .left,
+        .container .right {
+            background: #259a2e;
+            width: 200px;
+            height: 200px;
+        }
+
+        .container .content {
+            background: #0b1dc0;
+            position: relative;
+            height: 200px;
+        }
+
+        .container1 .content {
+            margin-left: 210px;
+        }
+
+        .container1 .left {
+            float: left;
+        }
+
+        .container2 .content {
+            overflow: hidden;
+        }
+
+        .container2 .right {
+            float: right;
+            margin-left: 10px;
+        }
+
+        .container3 .left {
+            position: absolute;
+            left: 0;
+        }
+
+        .container3 .content {
+            margin-left: 210px;
+        }
+        .container4 .left,.container4 .right,.container4 .content{
+           float: left;
+           width:50%;
+        }
+        .container5 .left,.container5 .right,.container5 .content{
+           display: inline-block;
+           width:50%;
+           margin-left: -4px;
+           vertical-align: -webkit-baseline-middle;
+        }
+        .container6 .left{
+           margin-right: 10px;
+           float: left;
+        }
+        .container6 .content{
+           overflow: hidden; 
+        }
+    </style>
+</head>
+
+<body>
+
+    左边固定宽度，右边自适应布局(基于浮动)
+    <div class="container container1">
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+    </div>
+    右边固定宽度，左边自适应布局(基于浮动)
+    <div class="container container2">
+        <div class="right">
+            leftleftleftleftleftleft
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+    </div>
+    左边固定宽度，右边自适应布局(基于定位)
+    <div class="container container3">
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+    </div>
+    栅格布局(宽度均为百分比)(基于float)：
+    <div class="container container4">
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <!-- <div class="right">
+            leftleftleftleftleftleft
+        </div> -->
+    </div>
+    栅格布局(宽度均为百分比)(基于inline-block)：
+    <div class="container container5">
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <!-- <div class="right">
+            leftleftleftleftleftleft
+        </div> -->
+    </div> 
+</body>
+
+</html>

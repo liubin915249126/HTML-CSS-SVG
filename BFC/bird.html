@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>圣杯布局与双飞翼布局</title>
+    <style type="text/css">
+        body,
+        html,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+        .container{
+            height:200px;
+        }
+        .container .left,
+        .container .right {
+            background: #259a2e;
+            width: 200px;
+            height: 200px;
+        }
+
+        .container .content {
+            background: #0b1dc0;
+            height: 200px;
+        }
+        .container1{
+            padding:0 210px;
+        }
+        .container1 .content{
+            float: left;
+            width:100%;
+        }
+        .container1 .left{
+            float: left;
+            position: relative;
+            margin-left:-100%;
+            left:-210px;
+        }
+        .container1 .right{
+            float: left;
+            position: relative;
+            margin-left:-200px;
+            right:-210px;
+        }
+        .container2 .main{
+            float: left;
+            width:100%;
+        }
+        .container2 .left{
+            float: left;
+            margin-left:-100%;
+            left:-210px;
+        }
+        .container2 .right{
+            float: left;
+            margin-left:-200px;
+        }
+        .container2 .content{
+           margin: 0 210px;
+        }
+    </style>
+</head>
+
+<body>
+    圣杯布局：
+    <div class="container container1">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="right">
+            rightrightrightrightright
+        </div>
+    </div>
+    双飞翼布局：
+    <div class="container container2">
+            <div class="main">
+                <div class="content">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</div>
+            </div>
+            <div class="left">
+                leftleftleftleftleftleft
+            </div>
+            <div class="right">
+                rightrightrightrightright
+            </div>
+        </div>
+</body>
+
+</html>

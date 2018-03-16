@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>float</title>
+    <style type="text/css">
+        div,
+        img {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            border: 1px solid #333;
+            width: 400px;
+        }
+
+        .container:not(:first-child) {
+            margin-top: 120px;
+        }
+
+        #position1,
+        #display1 {
+            height: 100px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        文字文字
+        <img src="img.jpeg" id="float1" />
+        <em>文字文字</em>
+    </div>
+    <div>
+        float:
+        <select id="float">
+            <option value="none">none</option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+        </select>
+    </div>
+    <div>position:
+        <select id="position">
+            <option value="static">static</option>
+            <option value="relative">relative</option>
+            <option value="absolute">absolute</option>
+            <option value="fixed">fixed</option>
+        </select>
+    </div>
+    <div class="container">
+        <div>文字文字</div>
+        <div id="position1">position position</div>
+        <div>文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字</div>
+    </div>
+    <div class="container">
+        文字文字
+        <div id="display1">display display</div>
+        <em>文字文字</em>
+    </div>
+    <div>display:
+        <select id="display">
+            <option value="block">block</option>
+            <option value="inline-block">inline-block</option>
+        </select>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            change();
+        };
+
+        function change() {
+            var display = document.getElementById('display');
+            var float = document.getElementById('float');
+            var position = document.getElementById('position');
+            var display1 = document.getElementById('display1');
+            var float1 = document.getElementById('float1');
+            var position1 = document.getElementById('position1');
+
+            [display, float, position].forEach(function (select) {
+                select.addEventListener('change', function () {
+                    var display = this.getAttribute('id');
+                    var dom = document.getElementById(display + '1')
+                    dom.style[display] = select.value
+                }, false)
+            })
+        }
+    </script>
+</body>
+
+</html>

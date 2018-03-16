@@ -1,12 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>BFC 测试</title>
+    <style type="text/css">
+        .container {
+            height: 200px;
+            width: 400px;
+        }
+
+        .container .bfc {
+            border: 1px solid #333;
+        }
+
+        .container .left {
+            float: left;
+            border: 1px solid red;
+        }
+    </style>
 </head>
+
 <body>
-    
+    <div class="container">
+        清除浮动，计算BFC的高度时，浮动元素也参与计算：
+        <div class="bfc">
+            <div style="float:left;">
+                浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动 浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动浮动 浮动浮动
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        BFC的区域不会与float box重叠：
+        <img src='img.jpeg' style="width:100px;" class="left" />
+        <div class="bfc">
+            BFC区域BFC区域BFC区域BFC区域BFC区域 BFC区域BFC区域BFC区域BFC区域BFC区域 BFC区域BFC区域BFC区域BFC区域BFC区域 BFC区域BFC区域BFC区域BFC区域BFC区域
+        </div>
+    </div>
+    <div class="container">
+        防止margin重叠
+        <div class="" style="margin:10px;padding:10px;">
+            非bfc
+        </div>
+        <div class="bfc" style="margin:10px;padding:10px;">
+            bfc
+        </div>
+    </div>
+    <div>display:
+        <select id="display">
+            <option value="block">block(不触发)</option>
+            <option value="inline-block">inline-block</option>
+            <option value="table-cell">table-cell</option>
+            <option value="table-caption">table-caption</option>
+            <option value="flex">flex</option>
+            <option value="inline-flex">inline-flex</option>
+        </select>
+    </div>
+    <div>float:
+        <select id="float">
+            <option value="none">none(不触发)</option>
+            <option value="left">left</option>
+            <option value="right">right</option>
+        </select>
+    </div>
+    <div>position:
+        <select id="position">
+            <option value="static">static(不触发)</option>
+            <option value="relative">relative(不触发)</option>
+            <option value="absolute">absolute</option>
+            <option value="fixed">fixed</option>
+        </select>
+    </div>
+    <div>overflow:
+        <select id="overflow">
+            <option value="visible">visible(不触发)</option>
+            <option value="hidden">hidden</option>
+            <option value="scroll">scroll</option>
+            <option value="auto">auto</option>
+        </select>
+    </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            change();
+        };
+
+        function change() {
+            var display = document.getElementById('display');
+            var float = document.getElementById('float');
+            var position = document.getElementById('position');
+            var overflow = document.getElementById('overflow');
+            var bfcDoms = document.querySelectorAll('.bfc');
+
+            [display, float, position, overflow].forEach(function (select) {
+                select.addEventListener('change', function () {
+                    var display = this.getAttribute('id');
+                    [].slice.call(bfcDoms).forEach(function (bfcDom) {
+                        bfcDom.style[display] = select.value;
+                    })
+                }, false)
+            })
+        }
+    </script>
 </body>
+
 </html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>三栏布局</title>
+    <style type="text/css">
+        body,
+        html,
+        div {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container .left,
+        .container .right {
+            background: #259a2e;
+            width: 200px;
+            height: 200px;
+        }
+
+        .container .content {
+            background: #0b1dc0;
+            position: relative;
+            height: 200px;
+        }
+
+        .container1 .left {
+            float: left;
+        }
+
+        .container1 .right {
+            float: right;
+        }
+
+        .container1 .content {
+            margin: 0 210px;
+        }
+        .container2{
+            position: relative;
+            padding:0 210px;
+        }
+        .container2 .left {
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+
+        .container2 .right {
+            position: absolute;
+            top:0;
+            right: 0;
+        }
+    </style>
+</head>
+
+<body>
+    左右固定宽度，中间自适应(左边左浮动，右边右浮动)
+    <div class="container container1">
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="right">
+            rightrightrightrightright
+        </div>
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+    </div>
+    左右固定宽度，中间自适应(左边左定位，右边右定位)
+    <div class="container container2">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="right">
+            rightrightrightrightright
+        </div>
+    </div>
+</body>
+
+</html>
