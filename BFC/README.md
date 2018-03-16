@@ -1,5 +1,5 @@
-#### 
-
+#### margin负值
+两种情况
 #### float,absolute,inline-block
 ```css
    float 文字环绕效果
@@ -30,4 +30,14 @@
     overflow不为visible
 ```
 #### flex
-
+```css
+   display:flex; //触发
+```
+```css
+    flex-direction: row | row-reverse | column | column-reverse; 属性决定主轴的方向（即项目的排列方向）。
+    flex-wrap: nowrap | wrap | wrap-reverse; 决定如何换行
+    flex-flow
+    justify-content: flex-start | flex-end | center | space-between | space-around;
+    align-items: flex-start | flex-end | center | baseline | stretch;
+    align-content
+```
