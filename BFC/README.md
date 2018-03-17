@@ -38,6 +38,13 @@
     flex-wrap: nowrap | wrap | wrap-reverse; 决定如何换行
     flex-flow
     justify-content: flex-start | flex-end | center | space-between | space-around;
-    align-items: flex-start | flex-end | center | baseline | stretch;
+    align-items: flex-start | flex-end | center | baseline | stretch; /* 如果项目未设置高度或设为auto，将占满整个容器的高度。 */
     align-content
+```
+```css
+   order: <integer>; //项目排列顺序，越大越靠后
+   flex-grow：<integer>; //属性定义项目的放大比例，默认为0，即如果存在剩余空间，也不放大。
+   flex-shrink: <number>; /* default 1 */
+   flex-basis: <length> | auto; /* default auto */属性定义了在分配多余空间之前，项目占据的主轴空间（main size）
+   align-self: auto | flex-start | flex-end | center | baseline | stretch;可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch
 ```

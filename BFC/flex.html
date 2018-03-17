@@ -16,11 +16,12 @@
 
         .flex .item {
             border: 1px solid #333;
-            width:100px;
-            height:50px;
+            width: 100px;
+            height: 50px;
         }
-        .flex .item:nth-child(2){
-            padding:20px;
+
+        .flex .item:nth-child(2) {
+            padding: 20px;
         }
     </style>
 </head>
@@ -32,51 +33,104 @@
         <div class="item">item333</div>
         <div class="item">item444</div>
     </div>
-    <div>
-        flex-direction
-        <select id="flexDirection">
-            <option value="row">row</option>
-            <option value="row-reverse">row-reverse</option>
-            <option value="column">column</option>
-            <option value="column-reverse">column-reverse</option>
-        </select>
-        flex-wrap
-        <select id="flexWrap">
-            <option value="nowrap">nowrap</option>
-            <option value="wrap">wrap</option>
-            <option value="wrap-reverse">wrap-reverse</option>
-        </select>
-    </div>
-    <div>
-        justify-content:
-        <select id="justifyContent">
-            <option value="flex-start">flex-start</option>
-            <option value="flex-end">flex-end</option>
-            <option value="center">center</option>
-            <option value="space-between">space-between</option>
-            <option value="space-around">space-around</option>
-        </select>
-        align-items
-        <select id="alignItems">
+    <div class="wrap">
+        <h3>父容器属性</h3>
+        <div class="large">
+            flex-direction
+            <select id="flexDirection">
+                <option value="row">row</option>
+                <option value="row-reverse">row-reverse</option>
+                <option value="column">column</option>
+                <option value="column-reverse">column-reverse</option>
+            </select>
+            flex-wrap
+            <select id="flexWrap">
+                <option value="nowrap">nowrap</option>
+                <option value="wrap">wrap</option>
+                <option value="wrap-reverse">wrap-reverse</option>
+            </select>
+        </div>
+        <div>
+            justify-content:
+            <select id="justifyContent">
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="space-between">space-between</option>
+                <option value="space-around">space-around</option>
+            </select>
+            align-items
+            <select id="alignItems">
                 <option value="flex-start">flex-start</option>
                 <option value="flex-end">flex-end</option>
                 <option value="center">center</option>
                 <option value="baseline">baseline</option>
                 <option value="stretch">stretch</option>
             </select>
+        </div>
     </div>
+    <div class="small">
+        <h3>元素属性</h3>
+        <div>
+            order
+            <select id="order">
+                <option value="0">0(default)</option>
+                <option value="1">1</option>
+                <option value="-1">-1</option>
+            </select>
+            flex-grow
+            <select id="flexGrow">
+                <option value="0">0(default)</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+            </select>
+        </div>
+        <div>
+            flex-shrink
+            <select id="flexShrink">
+                <option value="1">1(default)</option>
+                <option value="0">0</option>
+                <option value="2">2</option>
+            </select>
+            flex-basis
+            <select id="flexBasis">
+                <option value="1">auto(default)</option>
+                <option value="150px">150px</option>
+                <option value="250px">250px</option>
+            </select>
+            align-self
+            <select id="alignSelf">
+                <option value="auto">auto(default)</option>
+                <option value="flex-start">flex-start</option>
+                <option value="flex-end">flex-end</option>
+                <option value="center">center</option>
+                <option value="baseline">baseline</option>
+                <option value="stretch">stretch</option>
+            </select>
+        </div>
+    </div>
+
     <script type="text/javascript">
         window.onload = function () {
             change()
         }
 
         function change() {
-            var selects = document.querySelectorAll('select');
+            var selects1 = document.getElementsByClassName('wrap')[0].getElementsByTagName('select');
+            var selects2 = document.getElementsByClassName('small')[0].getElementsByTagName('select');
             var flex = document.querySelector('.flex');
-            [].slice.call(selects).forEach(function (select) {
+            var items = document.querySelectorAll('.item');
+            var item = items[1];
+            [].slice.call(selects1).forEach(function (select) {
                 select.addEventListener('change', function () {
                     var attr = this.getAttribute('id');
                     flex.style[attr] = this.value
+                }, false)
+            });
+            [].slice.call(selects2).forEach(function (select) {
+                select.addEventListener('change', function () {
+                    var attr = this.getAttribute('id');
+                    item.style[attr] = this.value
                 }, false)
             })
         }

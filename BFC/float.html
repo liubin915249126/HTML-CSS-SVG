@@ -27,11 +27,18 @@
             height: 100px;
             border: 1px solid red;
         }
+        .float::after{
+            content:'';
+            display: block;
+            height:0;
+            /* overflow: hidden; */
+            clear: both;
+        }
     </style>
 </head>
 
 <body>
-    <div class="container">
+    <div class="container float">
         文字文字
         <img src="img.jpeg" id="float1" />
         <em>文字文字</em>
