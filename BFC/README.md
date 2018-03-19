@@ -3,9 +3,9 @@
 #### float,absolute,inline-block
 ```css
    float 文字环绕效果
-   float,absolute脱离文档流
+   float,absolute脱离文档流(破坏性）
    float,absolute,inline-block包裹性
-   absolute:定位在border box
+   absolute:定位在border box (box-sizing 无效)
    float：content box 
 ```
 #### 1.BFC 定义
