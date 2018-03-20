@@ -7,22 +7,26 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>vertical-align测试</title>
     <style type="text/css">
-      html,css,div{
+        html,
+        css,
+        div {
+            margin: 0;
+            padding: 0;
+        }
 
-      }
-      .container{
-          width:400px;
-          /* height:200px; */
-          border:1px solid #333;
-          margin-bottom: 20px;  
-      }
-      .container .inner{
-          height:100px;
-          width:100px;
-          border:1px solid #333;
-          display:inline-block; 
-      }
-      
+        .container {
+            width: 400px;
+            /* height:200px; */
+            border: 1px solid #333;
+            margin-bottom: 20px;
+        }
+
+        .container .inner {
+            height: 100px;
+            width: 100px;
+            border: 1px solid #333;
+            display: inline-block;
+        }
     </style>
 </head>
 
@@ -34,15 +38,40 @@
     </div>
     <div class="container">
         文字文字文字文字
-        <img class="inner" src="base_line.jpg"/>
-        文字文字文字文字
+        <img class="inner" src="base_line.jpg" /> 文字文字文字文字
     </div>
     <div>
         vertical-align
         <select id="verticalAlign">
-          <option value="baseline">baseline</option>
+            <option value="baseline">baseline</option>
+            <option value="middle">middle</option>
+            <option value="top">top</option>
+            <option value="bottom">bottom</option>
+            <option value="sub">sub</option>
+            <option value="super">super</option>
+            <option value="text-top">text-top</option>
+            <option value="text-bottom">text-bottom</option>
+            <option value="unset">unset</option>
         </select>
     </div>
+    <script type="text/javascript">
+        window.onload = function () {
+            change()
+        }
+
+        function change() {
+            var select = document.querySelector('#verticalAlign');
+            var inners = document.querySelectorAll('.inner');
+            [select].forEach(function (select) {
+                select.addEventListener('change', function () {
+                    var attr = select.getAttribute('id');
+                    [].slice.call(inners).forEach(function(inner){
+                       inner.style[attr] =  select.value;
+                    })
+                })
+            })
+        }
+    </script>
 </body>
 
 </html>
