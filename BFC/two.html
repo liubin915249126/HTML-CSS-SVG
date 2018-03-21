@@ -52,23 +52,35 @@
         .container3 .content {
             margin-left: 210px;
         }
-        .container4 .left,.container4 .right,.container4 .content{
-           float: left;
-           width:50%;
+
+        .container4 .left,
+        .container4 .right,
+        .container4 .content {
+            float: left;
+            width: 50%;
         }
-        .container5 .left,.container5 .right,.container5 .content{
-           display: inline-block;
-           width:50%;
-           margin-left: -4px;
-           vertical-align: -webkit-baseline-middle;
+
+        .container5 .left,
+        .container5 .right,
+        .container5 .content {
+            display: inline-block;
+            width: 50%;
+            margin-left: -4px;
+            vertical-align: -webkit-baseline-middle;
         }
-        .container6 .left{
-           margin-right: 10px;
-           float: left;
+        .container6{
+            display: flex;
         }
-        .container6 .content{
-           overflow: hidden; 
+        .container6 .left {
+            order: -1;
+            flex-basis: 200px;
         }
+
+        .container6 .content {
+            flex-grow: 1;
+            margin-left: 10px;
+        }
+
     </style>
 </head>
 
@@ -101,6 +113,15 @@
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
         </div>
     </div>
+    flex 布局
+    <div class="container container6">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+    </div>
     栅格布局(宽度均为百分比)(基于float)：
     <div class="container container4">
         <div class="left">
@@ -124,7 +145,7 @@
         <!-- <div class="right">
             leftleftleftleftleftleft
         </div> -->
-    </div> 
+    </div>
 </body>
 
 </html>

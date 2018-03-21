@@ -53,6 +53,20 @@
             top:0;
             right: 0;
         }
+        .container3{
+            display: flex;
+        }
+        .container3 .left{
+            flex-basis: 200px;
+            order: -1;
+        }
+        .container3 .right{
+            flex-basis: 200px;
+        }
+        .container3 .content {
+            margin: 0 10px;
+            flex-grow: 1;
+        }
     </style>
 </head>
 
@@ -71,6 +85,18 @@
     </div>
     左右固定宽度，中间自适应(左边左定位，右边右定位)
     <div class="container container2">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="left">
+            leftleftleftleftleftleft
+        </div>
+        <div class="right">
+            rightrightrightrightright
+        </div>
+    </div>
+    flex 布局
+    <div class="container container3">
         <div class="content">
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
         </div>
