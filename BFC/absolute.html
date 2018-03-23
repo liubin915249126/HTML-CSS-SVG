@@ -10,19 +10,49 @@
         .container {
             border: 1px solid #333;
             position: relative;
-            padding:10px;
+            padding: 10px;
         }
-        .container .wrapper{
+
+        .container .wrapper {
             transform: translate(0);
-            padding:10px;
+            padding: 10px;
             border: 1px solid #333;
         }
+
         .container .inner {
             border: 1px solid #333;
             position: absolute;
             left: 0;
+            height: 100px;
+            width: 100%;
+        }
+        .container1{
+            border: 1px solid #333;
+            padding:10px;
+            margin-top: 200px;
+        }
+        .container1 .inner{
+            position: absolute;
+        }
+        .container2{
+            width:100px;
             height:100px;
-            width:100%;
+            border: 1px solid #333;
+            position: relative;
+            margin-top: 100px;
+        }
+        .container2 span{
+            position: absolute;
+            right:0;
+            top:0;
+            transform: translate(100%,-100%);
+            border: 1px solid #333;
+            border-radius: 50%;
+            width:22px;
+            height:22px;
+            display: inline-block;
+            text-align: center;
+            /* padding: 100%; */
         }
     </style>
 </head>
@@ -34,7 +64,25 @@
                 absoluteabsoluteabsolute
             </div>
         </div>
-
+    </div>
+    <div class="container1">
+        <span>1111111111</span>
+        <span>1111111111</span>
+        <span>1111111111</span>
+        <span class="inner">
+            absoluteabsoluteabsoluteabsolute
+        </span>
+        <div>111111111</div>
+    </div>
+    <div class="container1">
+        <div>1111111111</div>
+        <div class="inner">
+            absoluteabsoluteabsoluteabsolute
+        </div>
+        <span>111111111</span>
+    </div>
+    <div class="container2">
+        <span>2</span>
     </div>
 </body>
 
