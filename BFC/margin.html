@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>margin</title>
+    <style type="text/css">
+        html,
+        body,
+        div {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            border: 1px solid #333;
+            width: 400px;
+            margin: 150px auto;
+            height: 100px;
+
+        }
+
+        .container [class*=inner] {
+            border: 1px solid #333;
+            height: 100px;
+            margin: -10px;
+        }
+
+        .container .inner1 {
+            /* margin:0; */
+        }
+
+        .container .inner2 {
+            /* margin:0; */
+        }
+
+        .container:nth-child(2) [class*=inner] {
+            float: left;
+        }
+
+        .container:nth-child(3) {
+            position: relative;
+        }
+
+        .container:nth-child(3) [class*=inner] {
+            position: absolute;
+        }
+
+        .container:nth-child(3) .inner1 {
+            left: 0;
+        }
+
+        .container:nth-child(3) .inner2 {
+            right: 0;
+            bottom: 0;
+        }
+        .container:nth-child(4) [class*=inner] {
+           display: inline-block;
+        }
+        .wrapper{
+            
+        }
+        .wrapper .inner{
+            height:100px;
+            width:100px;
+            border:1px solid #333;
+        }
+    </style>    
+</head>
+
+<body>
+    <div class="container">
+        <div class="inner1">负值之美负值之美负值之美</div>
+        <div class="inner2">负值之美负值之美负值之美</div>
+    </div>
+    <div class="container">
+        <div class="inner1">floatfloatfloatfloat</div>
+        <div class="inner2">floatfloatfloatfloat</div>
+        <div class="inner1">floatfloatfloatfloat</div>
+        <div class="inner2">floatfloatfloatfloat</div>
+        
+    </div>
+    <div class="container">
+        <div class="inner1">absolute</div>
+        <div class="inner2">absolute</div>
+    </div>
+    <div class="container">
+        <div class="inner1">inline-block</div>
+        <div class="inner2">inline-block</div>
+        <div class="inner1">inline-block</div>
+        <div class="inner2">inline-block</div>
+        <div class="inner1">inline-block</div>
+        <div class="inner2">inline-block</div>
+    </div>
+    <div class="wrapper">
+            <div class="inner"></div>
+            <div class="inner"></div>
+            <div class="inner"></div>
+          </div>
+</body>
+
+</html>

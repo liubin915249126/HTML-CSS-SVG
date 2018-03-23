@@ -68,9 +68,11 @@
             margin-left: -4px;
             vertical-align: -webkit-baseline-middle;
         }
-        .container6{
+
+        .container6 {
             display: flex;
         }
+
         .container6 .left {
             order: -1;
             flex-basis: 200px;
@@ -81,6 +83,15 @@
             margin-left: 10px;
         }
 
+        .container7 {}
+
+        .container7 .left {}
+
+        .container7 .content {
+            position: absolute;
+            left: 210px;
+            right: 0;
+        }
     </style>
 </head>
 
@@ -111,6 +122,15 @@
         </div>
         <div class="content">
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+    </div>
+    左边固定宽度，右边自适应布局(absolute流体特性)
+    <div class="container container7">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="left">
+            leftleftleftleftleftleft
         </div>
     </div>
     flex 布局

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>absolute</title>
+    <style type="text/css">
+        .container {
+            border: 1px solid #333;
+            position: relative;
+            padding:10px;
+        }
+        .container .wrapper{
+            transform: translate(0);
+            padding:10px;
+            border: 1px solid #333;
+        }
+        .container .inner {
+            border: 1px solid #333;
+            position: absolute;
+            left: 0;
+            height:100px;
+            width:100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div class="inner">
+                absoluteabsoluteabsolute
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

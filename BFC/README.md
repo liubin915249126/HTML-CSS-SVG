@@ -1,13 +1,20 @@
-#### margin负值
-两种情况
 #### float,absolute,inline-block
 ```css
    float 文字环绕效果
    float,absolute脱离文档流(破坏性）
    float,absolute,inline-block包裹性
+   absolute left right流体特性
    absolute:定位在border box (box-sizing 无效)
    float：content box 
 ```
+#### margin
+元素充分利用可用空间，margin才能改变元素可视尺寸
+元素设定了宽度(100%),或是包裹性的时候对尺寸没有影响
+
+margin负值：
+absolute 设置了left,right流体特性，设置了宽度分两种情况
+float 浮动流一行显示分两种情况
+inline-block水平方向有影响分两种情况
 #### 1.BFC 定义
 ```js
    BFC(Block formatting context)直译为"块级格式化上下文"。它是一个独立的渲染区域，只有Block-level box参与， 它规定了内部的Block-level Box如何布局，并且与这个区域外部毫不相干。
