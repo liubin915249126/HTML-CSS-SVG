@@ -76,6 +76,7 @@
         .container6 .left {
             order: -1;
             flex-basis: 200px;
+            min-width: 200px;
         }
 
         .container6 .content {
@@ -91,6 +92,20 @@
             position: absolute;
             left: 210px;
             right: 0;
+        }
+
+        .container8 {
+            height:200px;
+        }
+
+        .container8 .right {
+            float:right;
+        }
+
+        .container8 .content{
+            position: absolute;
+            right: 210px;
+            left: 0;
         }
     </style>
 </head>
@@ -131,6 +146,15 @@
         </div>
         <div class="left">
             leftleftleftleftleftleft
+        </div>
+    </div>
+    右边固定宽度，左边自适应布局(absolute流体特性)
+    <div class="container container8">
+        <div class="content">
+            文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
+        </div>
+        <div class="right">
+            rightrightrightrightrig
         </div>
     </div>
     flex 布局
