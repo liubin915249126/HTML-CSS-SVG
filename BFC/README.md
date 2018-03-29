@@ -1,21 +1,25 @@
+#### 流体布局
+文档流，流的破坏
+div 自动充满父容器
 #### float,absolute,inline-block
 ```css
    float 文字环绕效果
    absolute，float脱离文档流
-   float 父元素高度塌陷
+   float 父元素高度塌陷(行框盒子)
    float,absolute,inline-block包裹性
-   absolute left right流体特性
+   absolute 同时设置了left right流体特性
    absolute:定位在border box (box-sizing 无效)
    float：content box 
 ```
 #### margin
-元素充分利用可用空间，margin才能改变元素可视尺寸
-元素设定了宽度(100%),或是包裹性的时候对尺寸没有影响
+元素充分利用可用空间，margin才能改变元素可视尺寸(#margin的两栏布局基于浮动)
+元素设定了宽度(100%),或是包裹性的时候对尺寸没有影响(整体尺寸变化)
 
 margin负值：
-absolute 设置了left,right流体特性，设置了宽度分两种情况
+absolute 设置了left,right流体特性，设置了宽高偏移
 float margin-bottom 要一行全部相同
       margin-top 向上
+      水平方向两种情况
 inline-block水平方向有影响分两种情况
 #### 1.BFC 定义
 ```js
@@ -24,7 +28,7 @@ inline-block水平方向有影响分两种情况
 #### 2.BFC布局规则：
 ```js
     (内部的Box会在垂直方向，一个接一个地放置。block
-    每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。inline float)
+    每个元素的margin box的左边， 与包含块border box的左边相接触(对于从左往右的格式化，否则相反)。即使存在浮动也是如此。inline float)(浮动流)
     Box垂直方向的距离由margin决定。属于同一个BFC的两个相邻Box的margin会发生重叠
     BFC的区域不会与float box重叠(absolute 与float会重叠)
     BFC就是页面上的一个隔离的独立容器，容器里面的子元素不会影响到外面的元素。反之也如此。
