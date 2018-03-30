@@ -200,6 +200,8 @@ demo:
 [stockcharts](https://github.com/rrag/react-stockcharts)
 [chanjs](https://github.com/andredumas/techan.js) k线图
 
+#### 收集
+[awesome-d3](https://github.com/wbkd/awesome-d3)
 
 #### 代码分享
 [jsfiddle](https://jsfiddle.net/)

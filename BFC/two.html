@@ -13,7 +13,9 @@
             padding: 0;
             margin: 0;
         }
-
+        .container{
+            margin-bottom: 40px;
+        }
         .container .left,
         .container .right {
             background: #259a2e;
@@ -112,7 +114,7 @@
 
 <body>
 
-    左边固定宽度，右边自适应布局(基于浮动)
+    左边固定宽度，右边自适应布局(基于浮动+margin)
     <div class="container container1">
         <div class="left">
             leftleftleftleftleftleft
@@ -121,7 +123,7 @@
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
         </div>
     </div>
-    右边固定宽度，左边自适应布局(基于浮动)
+    右边固定宽度，左边自适应布局(基于浮动+BFC)
     <div class="container container2">
         <div class="right">
             leftleftleftleftleftleft
@@ -130,7 +132,7 @@
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字
         </div>
     </div>
-    左边固定宽度，右边自适应布局(基于定位)
+    左边固定宽度，右边自适应布局(基于定位+margin)
     <div class="container container3">
         <div class="left">
             leftleftleftleftleftleft
@@ -148,7 +150,7 @@
             leftleftleftleftleftleft
         </div>
     </div>
-    右边固定宽度，左边自适应布局(absolute流体特性)
+    右边固定宽度，左边自适应布局(absolute流体特性+float:right)
     <div class="container container8">
         <div class="content">
             文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字

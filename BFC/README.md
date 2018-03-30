@@ -9,7 +9,8 @@ div 自动充满父容器
    float,absolute,inline-block包裹性
    absolute 同时设置了left right流体特性
    absolute:定位在border box (box-sizing 无效)
-   float：content box 
+   float：content box
+   inline-block:一个inline-block元素，如果里面没有inline内联元素，或者overflow不是visible，则该元素的基线就是其margin底边缘，否则，其基线就是元素里面最后一行内联元素的基线。
 ```
 #### margin
 元素充分利用可用空间，margin才能改变元素可视尺寸(#margin的两栏布局基于浮动)
