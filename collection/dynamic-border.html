@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态边框</title>
+    <style type="text/css">
+      /*CSS*/
+      .exammple {
+        width: 200px;
+        height: 200px;  
+        transition: ease-in 0.3s;
+        background: linear-gradient(0, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-90deg, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-180deg, #108b96 2px, #108b96 2px) no-repeat,
+          linear-gradient(-270deg, #108b96 2px, #108b96 2px) no-repeat;
+        background-size: 0 2px, 2px 0, 0 2px, 2px 0;
+        background-position: left top, right top, right bottom, left bottom;
+      }
+      .exammple:hover {
+        background-size: 100% 2px, 2px 100%, 100% 2px, 2px 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="exammple"></div>
+  </body>
+</html>
