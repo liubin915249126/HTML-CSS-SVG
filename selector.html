@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.other:first-child{
+          color:red;
+        }
+        div.item:first-of-type{
+            color:green;
+        }
+        body :last-child{
+            color:green;
+        }    
+
+
+        /* .item+:not(.other)~:not(.other){
+            color:red;
+        } */
+    </style>
+</head>
+<body>
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <div class="item">1</div>
+    <p class="item">1</p>
+    <p class="item">1</p>
+    <p class="item">1</p>
+    <div class="other">1</div>
+    <div class="other">1</div>
+    <p class="other">1</p>
+    <p class="other">1</p>
+    <p class="other">1</p>
+    <p class="item">1</p>
+    <p class="item">1</p>
+    <p class="item">1</p>
+    <p class="other">1</p>
+    <p class="other">1</p>
+    <p class="other">1</p>
+</body>
+</html>
+
+
+<!-- nth，nth-type 区分到标签 -->
+<!-- first-child前面有干扰不可以, last-child后面有干扰不行， 不知道基于啥考虑 -->
